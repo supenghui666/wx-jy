@@ -46,20 +46,6 @@
       login(){
         let reg = /^1[3|4|5|7|8][0-9]{9}$/;
         if (reg.test(this.telNub)&&this.code!=""){
-          // this.$store.commit('UPDATE_LOADING', true);
-          // this.$ajax.post(this._url+'/index.php/Home/User/login',{telNub:this.telNub,code:this.code}).then( response=>{
-          //   this.res = response.data;
-          //   if (response.data.status==1) {
-          //     this.$store.commit('UPDATE_LOADING', false);
-          //     this.$router.push("/reviewType");
-          //   }else{
-          //     // this.telErr=true;
-          //     // this.res.telErr = response.data.msg;
-          //   }
-          // }).catch( error=>{
-          //   console.log(error);
-          //   this.$store.commit('UPDATE_LOADING', false);
-          // })
           this.$store.dispatch('login/act/LOGIN', {
             Vue: this,
             telNub: this.telNub,
@@ -92,20 +78,9 @@
       getCode(){
         let reg = /^1[3|4|5|7|8][0-9]{9}$/;
         if (reg.test(this.telNub)&&this.telNub!=""){
-          this.$store.commit('UPDATE_LOADING', true);
-          this.$ajax.post(this._url+'/index.php/Home/User/sendmobcode',{telNub:this.telNub}).then( response=>{
-            this.res = response.data;
-            if (response.data.status==1) {
-              this.$store.commit('UPDATE_LOADING', false);
-              this.codeErr = false;
-              this.countDown();
-            }else{
-              this.telErr=true;
-              this.res.telErr = response.data.msg;
-              this.$store.commit('UPDATE_LOADING', false);
-            }
-          }).catch( error=>{
-            console.log(error);
+          this.$store.dispatch('login/act/CODE',{
+            Vue: this,
+            telNub: this.telNub
           })
         }else{
           // this.telErr=true;

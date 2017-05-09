@@ -26,6 +26,21 @@ const actions = {
         alert('get out');
       }
     });
+  },
+  [types.GET_CODE] ({state,rootState}, {Vue, telNub}) {
+    Vue.$store.dispatch('axios/act/HTTP',{
+      Vue,
+      url:rootState.getCodeUrl,
+      body: {
+        telNub
+      }
+    }).then((data) => {
+      if (data.status ===rootState.ok) {
+        Vue.$router.push('redPackets');
+      } else {
+        alert('get out');
+      }
+    })
   }
 }
 

@@ -18,7 +18,8 @@ const HOST = '/domain';// 用于本地调试
 const state = {
   'loadingShow': false,
   ok: 1,
-  loginUrl:`${HOST}/index.php/Home/User/login`
+  loginUrl:`${HOST}/index.php/Home/User/login`,
+  getCodeUrl:`${HOST}/index.php/Home/User/sendmobcode`
 };
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
