@@ -80,7 +80,7 @@
     created: function(){
       //获取评议的部门的题目
       this.obj = JSON.parse(localStorage.getItem(0));
-      this.$ajax.post(this._url._url+'/index.php/Home/Question/requestQs',{objID:this.obj.objID,refeStyle:this.obj.refeStyle,indexSeq:this.obj.indexSeq?this.obj.indexSeq:''}).then( response=> {
+      this.$ajax.post(this._url+'/index.php/Home/Question/requestQs',{objID:this.obj.objID,refeStyle:this.obj.refeStyle,indexSeq:this.obj.indexSeq?this.obj.indexSeq:''}).then( response=> {
         if (response.data.status==1) {
           this.allQuestion = response.data.data;
         }else{
@@ -89,7 +89,7 @@
         console.log(error);
       });
       //获取对应部门的题号
-      this.$ajax.post(this._url._url+'/index.php/Home/Question/questionChoices',{objID:this.obj.objID,refeStyle:this.obj.refeStyle}).then( response=> {
+      this.$ajax.post(this._url+'/index.php/Home/Question/questionChoices',{objID:this.obj.objID,refeStyle:this.obj.refeStyle}).then( response=> {
         if (response.data.status==1) {
           this.questionsType = response.data.data;
         }else{
@@ -127,7 +127,7 @@
         if (this.unsatisfyContent.length<20) {
           alert("您输入20字以上");
         }else{
-          this.$ajax.post(this._url._url+'/index.php/Home/Question/disContent',{remark:this.unsatisfyContent+'|'+this.allQuestion.remark,quesID:this.allQuestion.ID}).then(response =>{
+          this.$ajax.post(this._url+'/index.php/Home/Question/disContent',{remark:this.unsatisfyContent+'|'+this.allQuestion.remark,quesID:this.allQuestion.ID}).then(response =>{
             if (response.data.status==1) {
               this.onShow=false;
               this.onNext();
@@ -140,7 +140,7 @@
       },
       //底部题目改变
       change (item) {
-        this.$ajax.post(this._url._url+'/index.php/Home/Question/requestQs',{indexSeq:item.indexSeq,objID:this.obj.objID,refeStyle:this.obj.refeStyle}).then( response=> {
+        this.$ajax.post(this._url+'/index.php/Home/Question/requestQs',{indexSeq:item.indexSeq,objID:this.obj.objID,refeStyle:this.obj.refeStyle}).then( response=> {
           if (response.data.status==1) {
             this.allQuestion = response.data.data;
             this.showQues=!this.showQues; 
@@ -153,7 +153,7 @@
       },
       //获取下一题
       onNext (){
-        this.$ajax.post(this._url._url+'/index.php/Home/Question/saveQs',{quesID:this.allQuestion.ID,itemSeq:this.chioceIndex+1,objID:this.obj.objID}).then( response=> {
+        this.$ajax.post(this._url+'/index.php/Home/Question/saveQs',{quesID:this.allQuestion.ID,itemSeq:this.chioceIndex+1,objID:this.obj.objID}).then( response=> {
           if (response.data.status==1) {
             this.allQuestion = response.data.data;
           }else if(response.data.status==2){

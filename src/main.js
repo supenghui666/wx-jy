@@ -6,7 +6,6 @@ import axios from 'axios'
 import store from './vuex/store';
 import base from "./common/js/base"
 import router from './router'
-// import store from './store'
 /* eslint-disable no-new */
 Vue.config.productionTip = false
 // Vue.prototype._url = 'http://www.gaoshengyiyi.cn'+'/egov';//用于服务器

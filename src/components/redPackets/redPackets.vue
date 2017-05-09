@@ -17,19 +17,9 @@
     methods:{
       getRedpack(){
         this.objID = sessionStorage.getItem(0);
-        this.$ajax.post(this._url._url+'/index.php/Home/WXpay/',{objID:this.objID}).then(response=>{
-          if (response.data.status==1) {
-            alert("红包发送成功,请在公众号消息内领取")
-          }else{
-            if (response.data.data==0) {
-              alert(response.data.msg);
-            }else if (response.data.data==1) {}{
-              alert('您已领取过,请查收');
-              this.$router.push("/reviewType");
-            }
-          }
-        }).catch(error=>{
-          alert('网络异常');
+        this.$store.dispatch('getRedPacket/act/redPacket',{
+          Vue: this,
+          objID: this.objID
         })
       }
     }

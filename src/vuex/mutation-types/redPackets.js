@@ -1,0 +1,1 @@
+export const GET_REDPACKET = 'getRedPacket/act/redPacket'

@@ -1,14 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import impress from '@/components/impress/impress'
-// import login from '@/components/login/login'
-// import ingredient from '@/components/ingredient/ingredient'
-// import redPackets from '@/components/redPackets/redPackets'
-// import appraises from '@/components/impress/appraises/appraises'
-// import consultations from '@/components/ingredient/consultations/consultations'
-// import department from '@/components/ingredient/department/department'
-// import suggest from '@/components/ingredient/suggest/suggest'
-// import reviewType from '@/components/reviewType/reviewType'
 Vue.use(Router)
 
 export default new Router({

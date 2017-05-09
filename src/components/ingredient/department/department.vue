@@ -28,7 +28,7 @@
     },
     //获取调查用户可以做的部门
     created:function(){
-      this.$ajax.get(this._url._url+'/index.php/Home/Question/authObject').then( response=> {
+      this.$ajax.get(this._url+'/index.php/Home/Question/authObject').then( response=> {
         if (response.data.status==1) {
           this.authObject = response.data.data;
         }
@@ -52,7 +52,7 @@
           if (this.isComplete==1) {
             return false;
           };
-          this.$ajax.post(this._url._url+'/index.php/Home/Question/warmTip',{objID:this.objID,refeStyle:this.refeStyle}).then( response=> {
+          this.$ajax.post(this._url+'/index.php/Home/Question/warmTip',{objID:this.objID,refeStyle:this.refeStyle}).then( response=> {
             let obj = JSON.stringify({objID:this.objID,refeStyle:this.refeStyle,indexSeq:response.data.dialog});
             localStorage.setItem(0,obj);
             if (response.data.status==1) {

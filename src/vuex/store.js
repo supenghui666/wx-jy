@@ -19,7 +19,8 @@ const state = {
   'loadingShow': false,
   ok: 1,
   loginUrl:`${HOST}/index.php/Home/User/login`,
-  getCodeUrl:`${HOST}/index.php/Home/User/sendmobcode`
+  getCodeUrl:`${HOST}/index.php/Home/User/sendmobcode`,
+  getRedPacket:`${HOST}/index.php/Home/WXpay/`
 };
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {

@@ -21,7 +21,7 @@ const actions = {
       }
     }).then((data) => {
       if (data.status ===rootState.ok) {
-        Vue.$router.push('redPackets');
+        Vue.$router.push('reviewType');
       } else {
         alert('get out');
       }
@@ -36,7 +36,8 @@ const actions = {
       }
     }).then((data) => {
       if (data.status ===rootState.ok) {
-        Vue.$router.push('redPackets');
+        Vue.codeErr = false;
+        Vue.countDown();
       } else {
         alert('get out');
       }
@@ -47,7 +48,6 @@ const actions = {
 const mutations = {
 
 }
-
 export default {
   state,
   getters,
