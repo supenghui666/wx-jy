@@ -18,9 +18,11 @@ export default {
             resolve(data);
           }
         } else {
-          alert('请求失败，服务器异常');
+          
         }
-      });
+      }).catch((err)=>{
+        alert('请求失败，服务器异常');
+      })
     });
   }
 };

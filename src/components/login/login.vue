@@ -6,7 +6,7 @@
         <label>手机号:</label>
         <input type="tel" name="手机号" v-model="telNub" maxlength="11" autocomplete="off">
       </p>
-      <p v-show="telErr">{{res.telErr}}</p>
+      <p v-show="telErr!=''">{{res.telErr}}</p>
       <p>
         <label>验证码:</label>
         <input class="tel" type="text" name="验证码" maxlength="6" v-model="code" autocomplete="off">
@@ -26,11 +26,12 @@
         res:{},
         telNub:'',
         code:'',
-        telErr:false,
-        codeErr:false,
+        telErr:'',
+        codeErr:'',
         time:60,
         disabled: false,
-        val:'获取验证码'
+        val:'获取验证码',
+        reg: /^1[3|4|5|7|8][0-9]{9}$/
       }
     },
     watch:{
@@ -44,19 +45,15 @@
     methods:{
       //登录
       login(){
-        let reg = /^1[3|4|5|7|8][0-9]{9}$/;
-        if (reg.test(this.telNub)&&this.code!=""){
+        if (this.reg.test(this.telNub)&&this.code!=""){
           this.$store.dispatch('login/act/LOGIN', {
             Vue: this,
             telNub: this.telNub,
             code: this.code,
           });
         }else if (this.telNub==""&&this.code!="") {
-          this.telErr = true;
           this.res.text = "手机号不能为空";
         }else if (this.telNub==""&&this.code=="") {
-          this.telErr = true;
-          this.codeErr = true;
           this.res.telErr = "手机号不能为空";
           this.res.codeErr = "验证码不能为空";
         }
@@ -76,15 +73,13 @@
       },
       //获取验证码
       getCode(){
-        let reg = /^1[3|4|5|7|8][0-9]{9}$/;
-        if (reg.test(this.telNub)&&this.telNub!=""){
+        if (this.reg.test(this.telNub)){
           this.$store.dispatch('login/act/CODE',{
             Vue: this,
             telNub: this.telNub
           })
         }else{
-          // this.telErr=true;
-          // this.res.telErr = "手机号码格式不对";
+          this.res.telErr = "手机号码格式不对";
         }
       }
     }
